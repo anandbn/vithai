@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamil Kids Slide Show</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@400;600;800&family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Tamil Learning Slide Show</h1>
+            <div class="controls-top">
+                <label for="category-select">Category:</label>
+                <select id="category-select">
+                    <!-- Options populated by JS -->
+                </select>
+                <div class="timer-container">
+                    Time: <span id="timer">0</span>s
+                </div>
+            </div>
+        </header>
+
+        <main class="slide-container">
+            <button id="prev-btn" class="nav-btn" aria-label="Previous Word">❮</button>
+            
+            <div class="card">
+                <div class="word-content">
+                    <div id="english-word" class="word english">English</div>
+                    <div id="tamil-word" class="word tamil">தமிழ்</div>
+                </div>
+                <button id="speak-btn" class="speak-btn" aria-label="Pronounce Word">
+                    🔊 Speak
+                </button>
+            </div>
+
+            <button id="next-btn" class="nav-btn" aria-label="Next Word">❯</button>
+        </main>
+
+        <footer>
+            <p>Use Left/Right arrows to navigate</p>
+        </footer>
+    </div>
+
+    <!-- Load data first -->
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
