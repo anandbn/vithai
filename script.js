@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const speakBtn = document.getElementById('speak-btn');
     const timerEl = document.getElementById('timer');
     const cardEl = document.querySelector('.card');
+    const slideImage = document.getElementById('slide-image');
+    const imageLoader = document.getElementById('image-loader');
 
     // State
     let currentCategory = "";
@@ -69,8 +71,37 @@ document.addEventListener('DOMContentLoaded', () => {
         englishWordEl.textContent = currentWord.en;
         tamilWordEl.textContent = currentWord.ta;
 
+        // Update Image
+        updateImage(currentWord.en);
+
         // Auto-pronounce (optional - uncomment if desired to auto-speak on navigation)
         // speakTwice(currentWord);
+    }
+
+    function updateImage(keyword) {
+        // Show loader, hide image initially
+        imageLoader.style.display = 'block';
+        slideImage.style.display = 'none';
+
+        // Use local images: images/Category_Word.jpg
+        // Encode URI component to handle spaces if any
+        const imageUrl = `images/${currentCategory}_${encodeURIComponent(keyword)}.jpg`;
+
+        slideImage.src = imageUrl;
+
+        slideImage.onload = () => {
+            imageLoader.style.display = 'none';
+            slideImage.style.display = 'block';
+        };
+
+        slideImage.onerror = () => {
+            imageLoader.style.display = 'none';
+            // Optionally set a fallback image or keep hidden
+            console.error("Failed to load image for: " + keyword + " at " + imageUrl);
+
+            // Fallback to placeholder or keep hidden? 
+            // For now, let's leave it hidden (display: none from init)
+        };
     }
 
     // Navigation Logic
